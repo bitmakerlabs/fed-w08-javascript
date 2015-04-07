@@ -1,6 +1,6 @@
 # JavaScript
 
-Javascript is the most widely distributed programming language on Earth since every modern web browser relies on it. In this section we'll learn the basics of the Javascript language as a stepping stone to doing more useful things.
+JavaScript is the most widely distributed programming language on Earth since every modern web browser relies on it. In this section we'll learn the basics of the JavaScript language as a stepping stone to doing more useful things.
 
 To run this code:
 

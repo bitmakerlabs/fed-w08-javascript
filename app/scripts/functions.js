@@ -9,8 +9,6 @@ function functionWithParameters(param1, param2) {
   console.log('param2:', param2);
 }
 
-
-
 // Anonymous function
 var anonymous = function() {
   console.log("I'm anonymous");
