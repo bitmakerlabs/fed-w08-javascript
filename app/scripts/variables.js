@@ -36,6 +36,7 @@ daysOfTheWeek[1]      // => Monday
 daysOfTheWeek.length  // => 7
 
 // Object Literals
+var emptyObject = {};
 var anObject = { "key": "value", name: "description", "title": "body"};
 anObject["name"] //=> "description"
 anObject.name // => "description"

@@ -30,19 +30,30 @@ daysOfTheWeek.length  // => 7
 var anObject = { key: "value", name: "description", "title": "body"};
 
 
+function simpleForLoop() {
+  for (var i = 0; i < 9; i++) {
+    console.log(i);
+  };
+
+  console.log("Done looping! i = " + i);
+}
 
 // For Loop
 function forLoop() {
   var mystring = "some random string";
+  var sum = 0;
   for (var i = 0; i < mystring.length; i++) {
+    sum += i; // sum = sum + i;
     console.log(mystring[i]);
   };
+
+  console.log("sum: ", sum);
 }
 
 
 // While Loop
 function whileLoop() {
-  var counter = 90;
+  var counter = 200;
   while (counter < 100) {
     counter++;
     console.log('Counter:', counter);
@@ -86,12 +97,15 @@ function ifStatement() {
       aString = "PROTOTYPE",
       result;
 
-  if ( aString.length > 9 ) {
-      console.log("Condition A");
-      result = aString.length;
+  if ( aString.length >= 9 ) {
+    console.log("Condition A");
+    result = aString.length;
+  } else if ( aString.length < 9 ) {
+    console.log("Condition B");
+    result = "short"
   } else {
-      console.log("DEFAULT CASE");
-      result = null;
+    console.log("DEFAULT CASE");
+    result = null;
   }
 
   console.log("result: ", result);
@@ -99,7 +113,7 @@ function ifStatement() {
 
 function tertiaryOperator() {
   var ten = 10,
-      result = (ten > 10) ? true : false;
+      result = (ten >= 10) ? true : false;
 
   console.log("result:", result);
 }
@@ -133,6 +147,10 @@ function switchStatement() {
 // Named function
 function namedFunction() {
   console.log("Inside namedFunction");
+}
+
+function sum(a, b) {
+  return a + b;
 }
 
 // Functions with parameters

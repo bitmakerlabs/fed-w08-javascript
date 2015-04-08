@@ -1,9 +1,9 @@
 // if statements
 
 /*
-if (something) then
+if (condition is true) then
     do some action
-else if (something else) then
+else if (other condition is true) then
     do some secondary action
 else
     default action

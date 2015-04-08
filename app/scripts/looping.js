@@ -3,7 +3,7 @@
 // For Loop
 // i++ === (i = i + 1)
 for (var i = 0; i < 9; i++) {
-  console.log(Math.random());
+  console.log(i);
 };
 
 
