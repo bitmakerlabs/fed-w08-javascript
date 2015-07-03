@@ -1,5 +1,5 @@
-// Generated on 2014-12-16 using
-// generator-bitmaker-prototyping 1.0.0
+// Generated on 2015-07-03 using
+// generator-bitmaker 2.1.1
 'use strict';
 
 // # Globbing
@@ -34,20 +34,22 @@ module.exports = function (grunt) {
                 files: ['bower.json'],
                 tasks: ['bowerInstall']
             },
-            // js: {
-            //     files: ['<%= config.app %>/scripts/{,*/}*.js'],
-            //     tasks: ['jshint'],
-            //     options: {
-            //         livereload: true
-            //     }
-            // },
+            js: {
+                files: ['<%= config.app %>/scripts/{,*/}*.js'],
+                tasks: ['jshint'],
+                options: {
+                    livereload: true
+                }
+            },
             gruntfile: {
                 files: ['Gruntfile.js']
             },
+            
             sass: {
                 files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
                 tasks: ['sass:server', 'autoprefixer']
             },
+            
             styles: {
                 files: ['<%= config.app %>/styles/{,*/}*.css'],
                 tasks: ['newer:copy:styles', 'autoprefixer']
@@ -71,7 +73,7 @@ module.exports = function (grunt) {
                 open: true,
                 livereload: 35729,
                 // Change this to '0.0.0.0' to access the server from outside
-                hostname: 'localhost'
+                hostname: '*'
             },
             livereload: {
                 options: {
@@ -124,7 +126,7 @@ module.exports = function (grunt) {
         // Compiles Sass to CSS and generates necessary files if requested
         sass: {
             options: {
-                includePaths: [
+                loadPath: [
                     'bower_components'
                 ]
             },
@@ -178,8 +180,8 @@ module.exports = function (grunt) {
             options: {
                 assetsDirs: ['<%= config.dist %>']
             },
-            html: ['<%= config.dist %>/{,*/}*.html'],
-            css: ['<%= config.dist %>/styles/{,*/}*.css']
+            html: ['<%= config.dist %>/**/*.html'],
+            css: ['<%= config.dist %>/styles/**/*.css']
         },
 
         // Copies remaining files to places other tasks can use
@@ -193,23 +195,22 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,png,txt}',
                         '.htaccess',
-                        'images/{,*/}*.webp',
-                        '{,*/}*.html',
-                        'styles/fonts/{,*/}*.*',
-                        'images',
+                        'images/**',
+                        'styles/fonts/**',
+                        'fonts/**',
                         'README.md'
                     ]
                 },{
                   expand: true,
                   cwd: '.tmp/styles',
-                  src: '{,*/}*.css',
+                  src: '**/*.css',
                   dest: '<%= config.dist %>/styles/'
                 },{
                   expand: true,
                   dot: true,
                   cwd: '<%= config.app %>/scripts',
                   dest: '<%= config.dist %>/scripts/',
-                  src: '{,*/}*.js'
+                  src: '**/*.js'
                 }]
             },
             styles: {
@@ -217,7 +218,7 @@ module.exports = function (grunt) {
                 dot: true,
                 cwd: '<%= config.app %>/styles',
                 dest: '.tmp/styles/',
-                src: '{,*/}*.css'
+                src: '**/*.css'
             }
         },
 
@@ -242,36 +243,23 @@ module.exports = function (grunt) {
           }
         },
 
-        //
-        // Generates a custom Modernizr build that includes only the tests you
-        // reference in your app
-        modernizr: {
-            dist: {
-                devFile: 'bower_components/modernizr/modernizr.js',
-                outputFile: '<%= config.dist %>/scripts/vendor/modernizr.js',
-                files: {
-                    src: [
-                        '<%= config.dist %>/scripts/{,*/}*.js',
-                        '<%= config.dist %>/styles/{,*/}*.css',
-                        '!<%= config.dist %>/scripts/vendor/*'
-                    ]
-                },
-                uglify: true
-            }
-        },
-        //
+        // 
 
         // Run some tasks in parallel to speed up build process
         concurrent: {
             server: [
+              
                 'sass:server',
+              
                 'copy:styles'
             ],
             test: [
                 'copy:styles'
             ],
             dist: [
+              
                 'sass',
+              
                 'copy:styles'
             ]
         }
@@ -317,8 +305,7 @@ module.exports = function (grunt) {
         'concurrent:dist',
         'autoprefixer',
         'copy:dist',
-        'useminPrepare', //
-        'modernizr', //
+        'useminPrepare', // 
         'concat',
         'cssmin',
         'uglify',
